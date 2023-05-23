@@ -60,10 +60,6 @@ app.delete('/toys/:id', async(req, res)=> {
     res.send(result)
 })
 
-// app.get('/toy/:email', async(req, res)=> {
-//     console.log(req.params.email)
-//     let query = {};
-
 
 
 
