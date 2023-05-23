@@ -63,10 +63,6 @@ app.delete('/toys/:id', async(req, res)=> {
 // app.get('/toy/:email', async(req, res)=> {
 //     console.log(req.params.email)
 //     let query = {};
-//     if(req.params?.email) {
-//       query = {email: req.params.email}
-//     }
-//     const result = await toysCollection.find(query).toArray()
 
 
 
