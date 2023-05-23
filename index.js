@@ -8,9 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 
-// Fqx6jZucIrMry3fL
 
-// toysData
 
 
 const uri = "mongodb+srv://toysData:Fqx6jZucIrMry3fL@cluster0.alw7nxz.mongodb.net/?retryWrites=true&w=majority";
@@ -27,9 +25,10 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+    // await client.connect();
 
     const productsCollection = client.db('toysData').collection('products')
+    const toysCollection = client.db('toysData').collection('toys')
 
 app.get('/products', async(req, res)=>{
     const result = await productsCollection.find().toArray()
@@ -42,6 +41,26 @@ app.get('/products/:id', async(req, res)=>{
     const result = await productsCollection.findOne(query)
     res.send(result)
 })
+
+app.post('/toys', async(req, res)=>{
+    const body = req.body
+    const result = await toysCollection.insertOne(body)
+    res.send(result)
+})
+
+app.get('/toys', async(req, res)=>{
+    const result = await toysCollection.find().toArray()
+    res.send(result)
+})
+
+app.delete('toys/:id', async(req, res)=> {
+    const id = req.params.id
+    const query = {_id: new ObjectId(id)}
+    const result = await toysCollection.deleteOne(query)
+    res.send(result)
+})
+
+
 
 
 
