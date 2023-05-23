@@ -67,10 +67,7 @@ app.delete('/toys/:id', async(req, res)=> {
 //       query = {email: req.params.email}
 //     }
 //     const result = await toysCollection.find(query).toArray()
-//     res.send(result)   
 
-
-//   })
 
 
 
